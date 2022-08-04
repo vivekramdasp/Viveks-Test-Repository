@@ -1,0 +1,13 @@
+# Copyright (C) 2021-2022 Archingen, PLC DBA PermitZIP.
+
+# Ignore everything
+**
+
+# ... except for dependencies and source
+!Pipfile
+!Pipfile.lock
+!src/
+!src/*
+!setup.py
+!pyproject.toml
+!README.md

@@ -1,0 +1,28 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = "*"
+click = "*"
+click-help-colors = "*"
+pydantic = {extras = ["dotenv"], version = "*"}
+
+[dev-packages]
+pdoc = "*"
+
+[requires]
+python_version = "3.9"
+
+[scripts]
+test = "python -m unittest discover -v -s ./tests -p *test*.py"
+prepare = "pipenv install --ignore-pipfile --deploy"
+distribution = "python setup.py sdist bdist_wheel"
+publish-test = "twine upload --repository testpypi --skip-existing 'dist/*'"
+publish-prod = "twine upload --repository pypi 'dist/*'"
+docs = "pdoc -o docs -d google -t 'docs/templates' ../client ../models ../globals.py --logo 'https://github.com/permitzip/public-assets/blob/main/img/gadget-logo.png?raw=true'"
+docsdev = "pdoc -d google -t 'docs/templates' ../client ../models ../globals.py --logo 'https://github.com/permitzip/public-assets/blob/main/img/gadget-logo.png?raw=true'"
+
+[pipenv]
+allow_prereleases = true
